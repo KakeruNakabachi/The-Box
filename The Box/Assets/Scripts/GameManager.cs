@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour {
 
     public GameObject panelWalls;
 
+    public GameObject buttonMessage;
+    public GameObject buttonMessageText;
+
     private int wallNo; //現在の向いている方向
 
     // Use this for initialization
@@ -25,6 +28,16 @@ public class GameManager : MonoBehaviour {
 	void Update ()
     {
 
+    }
+
+    public void PushButtonMemo ()
+    {
+        DisplayMessage("エッフェル塔と書いてある");
+    }
+
+    public void PushButtonMessage ()
+    {
+        buttonMessage.SetActive(false); //メッセージを消す
     }
 
     public void PushButtonRight ()
@@ -48,6 +61,12 @@ public class GameManager : MonoBehaviour {
             wallNo = WALL_LEFT;
         }
         DisplayWall();
+    }
+
+    void DisplayMessage(string mes)
+    {
+        buttonMessage.SetActive(true);
+        buttonMessageText.GetComponent<Text>().text = mes;
     }
 
     void DisplayWall()
